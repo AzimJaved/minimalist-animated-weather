@@ -162,7 +162,40 @@ Item {
             MouseArea {
                 anchors.fill: parent
                 hoverEnabled: true
+
+                // Position d'entrée dans la zone — on ignore les mouvements
+                // tant que la souris n'a pas bougé d'au moins 8px depuis l'entrée,
+                // ce qui évite que le clic sur l'icône météo déplace immédiatement
+                // le marqueur.
+                property real _entryX: -1
+                property real _entryY: -1
+                property bool _moved: false
+
+                onEntered: {
+                    _entryX = -1;
+                    _entryY = -1;
+                    _moved  = false;
+                }
+                onExited: {
+                    _moved = false;
+                    chartRoot.hoverIndex = -1;
+                }
+
                 onPositionChanged: (mouse) => {
+                    // Mémorise la position d'entrée au premier événement
+                    if (_entryX < 0) {
+                        _entryX = mouse.x;
+                        _entryY = mouse.y;
+                    }
+
+                    // N'active le hover qu'après un vrai déplacement (>= 8px)
+                    if (!_moved) {
+                        let dx = mouse.x - _entryX;
+                        let dy = mouse.y - _entryY;
+                        if ((dx * dx + dy * dy) < 64) return;
+                        _moved = true;
+                    }
+
                     let w = canvas.width;
                     let h = canvas.height;
                     let n = chartRoot.values.length;
@@ -186,7 +219,6 @@ Item {
                         chartRoot.hoverIndex = -1;
                     }
                 }
-                onExited: chartRoot.hoverIndex = -1
             }
 
             onPaint: {
