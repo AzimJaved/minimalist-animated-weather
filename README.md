@@ -1,3 +1,7 @@
+
+
+
+
 # Minimalist Weather Animated 🌦️
 
 A highly customizable, animated, and minimalist weather widget for KDE Plasma 6, focused on data clarity and modern design.
@@ -7,9 +11,7 @@ This project is an enhanced version of the original [Minimal Chaac Weather](http
 
 ## 📸 Showcase
 
-|                   Demo                            |
-| :-----------------------------------------------: |
-|<img width="600" height="337" alt="presentationv2" src="https://github.com/user-attachments/assets/f2eee166-7736-4c77-8348-161c0aff3e02" /> |
+https://github.com/user-attachments/assets/9bf4881e-68da-4c3b-9591-92e3b6b0d43a
 
 |                  Dark Mode                |              Light Mode              |
 | :---------------------------------------: | :----------------------------------: |
