@@ -48,78 +48,6 @@ msgstr "UV指数"
 msgid "Wind"
 msgstr "風"
 
-msgid "General"
-msgstr "全般"
-
-msgid "Automatic Location (IP):"
-msgstr "自動位置情報 (IP):"
-
-msgid "Latitude:"
-msgstr "緯度:"
-
-msgid "Longitude:"
-msgstr "経度:"
-
-msgid "Temperature & Speed Unit:"
-msgstr "温度と速度の単位:"
-
-msgid "(°C) / (km/h)"
-msgstr "(°C) / (km/h)"
-
-msgid "(°F) / (mph)"
-msgstr "(°F) / (mph)"
-
-msgid "Update Interval (min):"
-msgstr "更新間隔 (分):"
-
-msgid "Show temperature:"
-msgstr "温度を表示:"
-
-msgid "Show condition text:"
-msgstr "状態テキストを表示:"
-
-msgid "Show condition text (panel):"
-msgstr "状態テキストを表示 (パネル):"
-
-msgid "Show condition text (Full view):"
-msgstr "状態テキストを表示 (詳細表示):"
-
-msgid "Show decimals (only panel):"
-msgstr "小数点を表示 (パネルのみ):"
-
-msgid "Show decimals on charts:"
-msgstr "グラフに小数点を表示:"
-
-msgid "Reverse Temp/Condition order:"
-msgstr "温度/状態の順序を逆にする:"
-
-msgid "Border radius (desktop view):"
-msgstr "境界の半径 (デスクトップビュー):"
-
-msgid "Temperature font size:"
-msgstr "温度のフォントサイズ:"
-
-msgid "Bold temperature:"
-msgstr "温度を太字にする:"
-
-msgid "Condition font size:"
-msgstr "状態のフォントサイズ:"
-
-msgid "Bold condition text:"
-msgstr "状態テキストを太字にする:"
-
-msgid "Details to show:"
-msgstr "表示する詳細:"
-
-msgid "Apparent Temperature"
-msgstr "体感温度"
-
-msgid "Wind Speed"
-msgstr "風速"
-
-msgid "Forecast start day offset:"
-msgstr "予報開始日のオフセット:"
-
 msgid "Feels"
 msgstr "体感"
 
@@ -132,11 +60,128 @@ msgstr "UV"
 msgid "Temp."
 msgstr "温度"
 
-msgid "Enable weather animations:"
-msgstr "気象アニメーションを有効にする:"
+msgid "Restore default settings?"
+msgstr "デフォルト設定を復元しますか？"
 
-msgid "Refresh Weather Data"
-msgstr "気象データを更新"
+msgid "All settings on this page will be reset to their defaults. This cannot be undone."
+msgstr "このページのすべての設定はデフォルトにリセットされます。この操作は元に戻せません。"
 
-msgid "Manual Actions:"
-msgstr "手動アクション:"
+msgid "Location"
+msgstr "場所"
+
+msgid "Automatic location (IP):"
+msgstr "自動位置情報 (IP):"
+
+msgid "Coordinates:"
+msgstr "座標:"
+
+msgid "Latitude"
+msgstr "緯度"
+
+msgid "Longitude"
+msgstr "経度"
+
+msgid "Units & updates"
+msgstr "単位と更新"
+
+msgid "Units:"
+msgstr "単位:"
+
+msgid "Update interval:"
+msgstr "更新間隔:"
+
+msgid "Refresh now"
+msgstr "今すぐ更新"
+
+msgid "Style"
+msgstr "スタイル"
+
+msgid "Panel"
+msgstr "パネル"
+
+msgid "Show:"
+msgstr "表示:"
+
+msgid "Temperature"
+msgstr "温度"
+
+msgid "Condition"
+msgstr "状態"
+
+msgid "Reverse order"
+msgstr "順序を逆にする"
+
+msgid "Temperature font:"
+msgstr "温度のフォント:"
+
+msgid "Bold"
+msgstr "太字"
+
+msgid "Condition font:"
+msgstr "状態のフォント:"
+
+msgid "Decimals:"
+msgstr "小数点:"
+
+msgid "Full view"
+msgstr "詳細表示"
+
+msgid "Condition:"
+msgstr "状態:"
+
+msgid "Chart decimals:"
+msgstr "グラフの小数点:"
+
+msgid "Cursor decimals:"
+msgstr "カーソルの小数点:"
+
+msgid "Shows one decimal while hovering the chart.\nWithout it, the value only updates at whole numbers and can appear stuck as you move along."
+msgstr "グラフにホバーすると小数第1位まで表示されます。\nこれがないと、値は整数でのみ更新され、移動中にフリーズしているように見えることがあります。"
+
+msgid "Y-axis reading:"
+msgstr "Y軸の読み取り:"
+
+msgid "Hover the left edge of the chart to read a value off the Y axis instead of following the curve."
+msgstr "曲線をたどる代わりに、グラフの左端にホバーしてY軸の値を読み取ります。"
+
+msgid "Weather animations:"
+msgstr "気象アニメーション:"
+
+msgid "Details:"
+msgstr "詳細:"
+
+msgid "Apparent temp."
+msgstr "体感温度"
+
+msgid "UV index"
+msgstr "UV指数"
+
+msgid "Wind speed"
+msgstr "風速"
+
+msgid "Desktop widget:"
+msgstr "デスクトップウィジェット:"
+
+msgid "Radius"
+msgstr "半径"
+
+msgid "Opacity"
+msgstr "不透明度"
+
+msgid "Only applies when the widget sits directly on the desktop, not in a panel popup."
+msgstr "ウィジェットがパネルのポップアップではなく、デスクトップに直接配置されている場合にのみ適用されます。"
+
+msgid "Forecast"
+msgstr "予報"
+
+msgid "Start day offset:"
+msgstr "開始日のオフセット:"
+
+msgid "Data"
+msgstr "データ"
+
+msgid "Settings:"
+msgstr "設定:"
+
+msgid "Restore default settings"
+msgstr "デフォルト設定を復元"

@@ -1,6 +1,7 @@
 import QtQuick 2.15
 import QtQuick.Layouts 1.15
 import QtQuick.Controls 2.15
+import Qt5Compat.GraphicalEffects
 import org.kde.plasma.plasmoid 2.0
 import org.kde.plasma.components 3.0 as PlasmaComponents3
 import "components" as Components
@@ -123,250 +124,290 @@ Item {
     Layout.preferredHeight: calculatedHeight
 
     // --- 1. LE FOND ANIMÉ ---
-    Rectangle {
-        id: backgroundContainer
+    // NOTE IMPORTANTE : "clip: true" sur un Rectangle ne clippe ses enfants
+    // qu'à son RECTANGLE englobant (les angles droits), pas à sa forme
+    // arrondie réelle (le "radius" n'est qu'un effet visuel du fill, il
+    // n'affecte pas le clipping). Du coup, dès qu'un enfant (ici les
+    // animations météo dans "animationsLayers") dessine quelque chose dans
+    // les coins, on voit ressortir des angles droits derrière les coins
+    // arrondis — particulièrement visible quand backgroundOpacity est à 0
+    // puisqu'il ne reste alors plus que cet artefact.
+    // On corrige ça en appliquant un masque (OpacityMask) à la forme
+    // arrondie sur l'ensemble du calque (fond + animations), via un Item
+    // englobant dédié.
+    Item {
+        id: backgroundClipWrapper
         anchors { fill: parent; margins: -8 }
-        color: Kirigami.Theme.backgroundColor
-        radius: root.borderRadius
-        clip: true
-
-        layer.enabled: !!plasmoid.configuration.showAnimations
-        layer.smooth: true
         z: -1
 
-        Item {
-            id: animationsLayers
+        layer.enabled: true
+        layer.smooth: true
+        layer.effect: OpacityMask {
+            maskSource: backgroundMaskShape
+        }
+
+        Rectangle {
+            id: backgroundMaskShape
             anchors.fill: parent
+            radius: root.borderRadius
+            color: "white"
+            visible: false
+        }
 
-            visible: !!(plasmoid.configuration.showAnimations &&
-            weatherData &&
-            weatherData.weatherData &&
-            weatherData.temperaturaActual !== "--")
+        Rectangle {
+            id: backgroundContainer
+            anchors.fill: parent
+            // On encode l'opacité directement dans la couleur (Qt.rgba) plutôt
+            // que de l'appliquer via la propriété "opacity" du Rectangle :
+            // "opacity" se propage à TOUS les enfants (donc aussi aux animations
+            // météo - soleil, pluie, nuages... - qui vivent dans
+            // "animationsLayers" ci-dessous), ce qui les rendait invisibles dès
+            // qu'on baissait l'opacité du fond. En ne rendant transparente que la
+            // couleur de remplissage, les animations restent à 100% d'opacité.
+            color: Qt.rgba(Kirigami.Theme.backgroundColor.r,
+                           Kirigami.Theme.backgroundColor.g,
+                           Kirigami.Theme.backgroundColor.b,
+                           root.backgroundOpacity)
+            radius: root.borderRadius
+            clip: true
 
-            // Vrai quand on inspecte un jour précis dans la vue détail
-            // (courbes). Dans ce cas, le fond animé doit refléter la météo
-            // DE CE JOUR-LÀ plutôt que la condition réelle actuelle.
-            readonly property bool dayDetailActive: rootItem.selectedDayIndex !== -1
+            layer.enabled: !!plasmoid.configuration.showAnimations
+            layer.smooth: true
 
-            // Code météo affiché par le fond. En vue détail, on suit
-            // désormais l'heure SURVOLÉE sur la courbe plutôt que le code
-            // unique du jour entier : avant, weatherCode restait figé sur
-            // dailyData.weather_code (un seul effet — pluie, brume, etc. —
-            // pour toute la journée), alors que isDay et windValue
-            // suivaient déjà viewedHour. weather_code existe aussi dans
-            // les données horaires (hourlyParams le demande déjà dans
-            // GetWeather.js), donc aucune requête supplémentaire n'est
-            // nécessaire : hourlySlice("weather_code") donne directement
-            // le code de l'heure pointée. Sans survol, on retombe sur le
-            // code du jour entier (comportement inchangé), et en vue
-            // classique sur la condition réelle actuelle.
-            readonly property int weatherCode: {
-                if (dayDetailActive) {
-                    // 1. Si on survole une heure précise, on prend la prévision de cette heure
-                    if (dayLineChart && dayLineChart.hoverIndex !== -1 && rootItem.hasHourlyData) {
-                        let codeSlice = rootItem.hourlySlice("weather_code");
-                        let hc = codeSlice[animationsLayers.viewedHour];
-                        if (hc !== undefined && hc !== null) return parseInt(hc);
+            Item {
+                id: animationsLayers
+                anchors.fill: parent
+
+                visible: !!(plasmoid.configuration.showAnimations &&
+                weatherData &&
+                weatherData.weatherData &&
+                weatherData.temperaturaActual !== "--")
+
+                // Vrai quand on inspecte un jour précis dans la vue détail
+                // (courbes). Dans ce cas, le fond animé doit refléter la météo
+                // DE CE JOUR-LÀ plutôt que la condition réelle actuelle.
+                readonly property bool dayDetailActive: rootItem.selectedDayIndex !== -1
+
+                // Code météo affiché par le fond. En vue détail, on suit
+                // désormais l'heure SURVOLÉE sur la courbe plutôt que le code
+                // unique du jour entier : avant, weatherCode restait figé sur
+                // dailyData.weather_code (un seul effet — pluie, brume, etc. —
+                // pour toute la journée), alors que isDay et windValue
+                // suivaient déjà viewedHour. weather_code existe aussi dans
+                // les données horaires (hourlyParams le demande déjà dans
+                // GetWeather.js), donc aucune requête supplémentaire n'est
+                // nécessaire : hourlySlice("weather_code") donne directement
+                // le code de l'heure pointée. Sans survol, on retombe sur le
+                // code du jour entier (comportement inchangé), et en vue
+                // classique sur la condition réelle actuelle.
+                readonly property int weatherCode: {
+                    if (dayDetailActive) {
+                        // 1. Si on survole une heure précise, on prend la prévision de cette heure
+                        if (dayLineChart && dayLineChart.hoverIndex !== -1 && rootItem.hasHourlyData) {
+                            let codeSlice = rootItem.hourlySlice("weather_code");
+                            let hc = codeSlice[animationsLayers.viewedHour];
+                            if (hc !== undefined && hc !== null) return parseInt(hc);
+                        }
+
+                        // --- DÉBUT DE LA CORRECTION ---
+                        // 2. Pas de survol, mais on est sur le JOUR ACTUEL :
+                        // On affiche la condition réelle actuelle au lieu de la globale du jour.
+                        if (rootItem.selectedDayIndex === rootItem.currentDayIndex) {
+                            return weatherData && weatherData.codeweather ? parseInt(weatherData.codeweather) : 0;
+                        }
+                        // --- FIN DE LA CORRECTION ---
+
+                        // 3. Pas de survol, et on regarde un AUTRE jour (passé ou futur) :
+                        // On se rabat sur la tendance globale de ce jour-là.
+                        if (rootItem.dailyData && rootItem.dailyData.weather_code) {
+                            let code = rootItem.dailyData.weather_code[rootItem.selectedDayIndex];
+                            return (code !== undefined && code !== null) ? parseInt(code) : 0;
+                        }
+                        return 0;
                     }
 
-                    // --- DÉBUT DE LA CORRECTION ---
-                    // 2. Pas de survol, mais on est sur le JOUR ACTUEL :
-                    // On affiche la condition réelle actuelle au lieu de la globale du jour.
-                    if (rootItem.selectedDayIndex === rootItem.currentDayIndex) {
-                        return weatherData && weatherData.codeweather ? parseInt(weatherData.codeweather) : 0;
+                    // Vue classique (widget réduit ou courbes fermées)
+                    return weatherData && weatherData.codeweather ? parseInt(weatherData.codeweather) : 0;
+                }
+
+                // Minute "regardée" dans la journée (0-1439) : celle survolée
+                // sur la courbe en vue détail (le marqueur suit la souris sur le
+                // graphique — précision à l'heure, c'est la seule offerte par
+                // les données horaires), sinon l'heure réelle actuelle à la
+                // minute près. Sans survol, on retombe simplement sur
+                // "maintenant".
+                readonly property int viewedMinutes: {
+                    if (dayDetailActive && dayLineChart && dayLineChart.hoverIndex !== -1) {
+                        return Math.round(dayLineChart.hoverIndex * 60);
                     }
-                    // --- FIN DE LA CORRECTION ---
+                    let now = new Date();
+                    return now.getHours() * 60 + now.getMinutes();
+                }
+                readonly property int viewedHour: Math.floor(viewedMinutes / 60)
 
-                    // 3. Pas de survol, et on regarde un AUTRE jour (passé ou futur) :
-                    // On se rabat sur la tendance globale de ce jour-là.
-                    if (rootItem.dailyData && rootItem.dailyData.weather_code) {
-                        let code = rootItem.dailyData.weather_code[rootItem.selectedDayIndex];
-                        return (code !== undefined && code !== null) ? parseInt(code) : 0;
+                // Extrait "HH:MM" d'une chaîne ISO Open-Meteo (ex: "2026-06-17T05:48")
+                // et la convertit en minutes depuis minuit. La requête utilise
+                // "timezone=auto", donc cette heure est déjà locale — pas de
+                // conversion de fuseau à faire ici.
+                function minutesFromIso(iso) {
+                    if (!iso) return null;
+                    let t = iso.split("T")[1];
+                    if (!t) return null;
+                    let p = t.split(":");
+                    return parseInt(p[0]) * 60 + parseInt(p[1]);
+                }
+
+                // Jour/nuit à partir du VRAI lever et coucher de soleil du jour
+                // concerné (rootItem.dailyData.sunrise/sunset), plutôt que d'un
+                // seuil fixe 7h-20h qui mentait en plein hiver ou en plein été.
+                // Repli sur l'heuristique 7h-20h si ces données venaient à
+                // manquer (sécurité).
+                function isDayAt(dayIdx, minutesOfDay) {
+                    let sunrise = (rootItem.dailyData && rootItem.dailyData.sunrise) ? minutesFromIso(rootItem.dailyData.sunrise[dayIdx]) : null;
+                    let sunset  = (rootItem.dailyData && rootItem.dailyData.sunset)  ? minutesFromIso(rootItem.dailyData.sunset[dayIdx])  : null;
+                    if (sunrise === null || sunset === null) {
+                        let h = Math.floor(minutesOfDay / 60);
+                        return (h >= 7 && h <= 20);
                     }
-                    return 0;
+                    return minutesOfDay >= sunrise && minutesOfDay < sunset;
                 }
 
-                // Vue classique (widget réduit ou courbes fermées)
-                return weatherData && weatherData.codeweather ? parseInt(weatherData.codeweather) : 0;
-            }
-
-            // Minute "regardée" dans la journée (0-1439) : celle survolée
-            // sur la courbe en vue détail (le marqueur suit la souris sur le
-            // graphique — précision à l'heure, c'est la seule offerte par
-            // les données horaires), sinon l'heure réelle actuelle à la
-            // minute près. Sans survol, on retombe simplement sur
-            // "maintenant".
-            readonly property int viewedMinutes: {
-                if (dayDetailActive && dayLineChart && dayLineChart.hoverIndex !== -1) {
-                    return dayLineChart.hoverIndex * 60;
-                }
-                let now = new Date();
-                return now.getHours() * 60 + now.getMinutes();
-            }
-            readonly property int viewedHour: Math.floor(viewedMinutes / 60)
-
-            // Extrait "HH:MM" d'une chaîne ISO Open-Meteo (ex: "2026-06-17T05:48")
-            // et la convertit en minutes depuis minuit. La requête utilise
-            // "timezone=auto", donc cette heure est déjà locale — pas de
-            // conversion de fuseau à faire ici.
-            function minutesFromIso(iso) {
-                if (!iso) return null;
-                let t = iso.split("T")[1];
-                if (!t) return null;
-                let p = t.split(":");
-                return parseInt(p[0]) * 60 + parseInt(p[1]);
-            }
-
-            // Jour/nuit à partir du VRAI lever et coucher de soleil du jour
-            // concerné (rootItem.dailyData.sunrise/sunset), plutôt que d'un
-            // seuil fixe 7h-20h qui mentait en plein hiver ou en plein été.
-            // Repli sur l'heuristique 7h-20h si ces données venaient à
-            // manquer (sécurité).
-            function isDayAt(dayIdx, minutesOfDay) {
-                let sunrise = (rootItem.dailyData && rootItem.dailyData.sunrise) ? minutesFromIso(rootItem.dailyData.sunrise[dayIdx]) : null;
-                let sunset  = (rootItem.dailyData && rootItem.dailyData.sunset)  ? minutesFromIso(rootItem.dailyData.sunset[dayIdx])  : null;
-                if (sunrise === null || sunset === null) {
-                    let h = Math.floor(minutesOfDay / 60);
-                    return (h >= 7 && h <= 20);
-                }
-                return minutesOfDay >= sunrise && minutesOfDay < sunset;
-            }
-
-            // Vent : pris dans les prévisions horaires du jour inspecté (à
-            // l'heure regardée) en vue détail, sinon le vent réel actuel.
-            readonly property real windValue: {
-                if (dayDetailActive && rootItem.hasHourlyData) {
-                    let windSlice = rootItem.hourlySlice("wind_speed_10m");
-                    let v = windSlice[animationsLayers.viewedHour];
-                    return (v !== undefined) ? parseFloat(v) : 0;
-                }
-                return weatherData && weatherData.windSpeed && weatherData.windSpeed !== "--" ? parseFloat(weatherData.windSpeed) : 0;
-            }
-
-            readonly property bool isDay: {
-                if (!dayDetailActive) {
-                    // Vue classique ("maintenant") : on privilégie le drapeau
-                    // is_day renvoyé par l'API pour l'instant présent — déjà
-                    // calculé côté serveur, c'est la source la plus fiable.
-                    if (weatherData && weatherData.weatherData && weatherData.weatherData.current) {
-                        return weatherData.weatherData.current.is_day === 1;
+                // Vent : pris dans les prévisions horaires du jour inspecté (à
+                // l'heure regardée) en vue détail, sinon le vent réel actuel.
+                readonly property real windValue: {
+                    if (dayDetailActive && rootItem.hasHourlyData) {
+                        let windSlice = rootItem.hourlySlice("wind_speed_10m");
+                        let v = windSlice[animationsLayers.viewedHour];
+                        return (v !== undefined) ? parseFloat(v) : 0;
                     }
-                    return isDayAt(rootItem.currentDayIndex, viewedMinutes);
+                    return weatherData && weatherData.windSpeed && weatherData.windSpeed !== "--" ? parseFloat(weatherData.windSpeed) : 0;
                 }
-                // Vue détail : vrai lever/coucher DU JOUR SÉLECTIONNÉ, comparé
-                // à l'heure regardée sur la courbe.
-                return isDayAt(rootItem.selectedDayIndex, viewedMinutes);
-            }
 
-            // --- Soleil / Nuit en fondu croisé ---
-            // Avant : un seul Loader dont la "source" basculait entre les
-            // deux animations selon isDay. À chaque bascule, QML détruit
-            // entièrement l'ancien composant et instancie le nouveau —
-            // d'où la coupure nette. Ici, les deux animations restent
-            // chargées en permanence (donc jamais détruites/recréées) et on
-            // fait varier leur opacité en sens inverse avec un Behavior :
-            // le changement devient un fondu doux plutôt qu'un instantané.
-            // Comme isDay peut changer plusieurs fois rapidement pendant un
-            // survol de la courbe, le Behavior se "retargete" en douceur à
-            // chaque nouvelle valeur sans jamais sembler saccadé.
-            Loader {
-                anchors.fill: parent
-                active: !!(plasmoid.configuration.showAnimations && animationsLayers.visible)
-                source: "animations/soleil.qml"
-                opacity: animationsLayers.isDay ? 1.0 : 0.0
-                visible: opacity > 0.01
-                Behavior on opacity { NumberAnimation { duration: 1100; easing.type: Easing.InOutSine } }
-            }
-            Loader {
-                anchors.fill: parent
-                active: !!(plasmoid.configuration.showAnimations && animationsLayers.visible)
-                source: "animations/nuit.qml"
-                opacity: animationsLayers.isDay ? 0.0 : 1.0
-                visible: opacity > 0.01
-                Behavior on opacity { NumberAnimation { duration: 1100; easing.type: Easing.InOutSine } }
-            }
-            // --- Effets météo (nuage / pluie / neige / etc.) en fondu ---
-            // Même principe que Soleil/Nuit ci-dessus : avant, un Loader
-            // unique changeait de "source" selon le code météo, ce qui
-            // détruisait et recréait l'effet à chaque bascule — coupure
-            // nette, et de toute façon weatherCode ne suivait pas l'heure
-            // survolée donc l'effet ne changeait jamais pendant un survol.
-            // Maintenant que weatherCode suit viewedHour, le survol de la
-            // courbe peut faire défiler plusieurs conditions météo dans la
-            // même journée ; chaque effet reste chargé en permanence et
-            // seule son opacité varie, avec le même Behavior (1100ms) que
-            // pour isDay, pour un fondu cohérent entre tous les effets de
-            // fond plutôt qu'un instantané pour les uns et un fondu pour
-            // les autres.
-            readonly property bool showCloud:  weatherCode >= 3 && weatherCode !== 45 && weatherCode !== 48
-            readonly property bool showOrage:  weatherCode >= 95
-            readonly property bool showNeige:  (weatherCode >= 71 && weatherCode <= 77) || weatherCode === 85 || weatherCode === 86
-            readonly property bool showPluie:  (weatherCode >= 61 && weatherCode <= 67) || (weatherCode >= 80 && weatherCode <= 82)
-            readonly property bool showBruine: weatherCode >= 51 && weatherCode <= 57
-            readonly property bool showBrume:  weatherCode === 45 || weatherCode === 48
+                readonly property bool isDay: {
+                    if (!dayDetailActive) {
+                        // Vue classique ("maintenant") : on privilégie le drapeau
+                        // is_day renvoyé par l'API pour l'instant présent — déjà
+                        // calculé côté serveur, c'est la source la plus fiable.
+                        if (weatherData && weatherData.weatherData && weatherData.weatherData.current) {
+                            return weatherData.weatherData.current.is_day === 1;
+                        }
+                        return isDayAt(rootItem.currentDayIndex, viewedMinutes);
+                    }
+                    // Vue détail : vrai lever/coucher DU JOUR SÉLECTIONNÉ, comparé
+                    // à l'heure regardée sur la courbe.
+                    return isDayAt(rootItem.selectedDayIndex, viewedMinutes);
+                }
 
-            Loader {
-                anchors.fill: parent
-                active: !!(plasmoid.configuration.showAnimations && animationsLayers.visible)
-                source: "animations/nuage.qml"
-                opacity: animationsLayers.showCloud ? 1.0 : 0.0
-                visible: opacity > 0.01
-                Behavior on opacity { NumberAnimation { duration: 1100; easing.type: Easing.InOutSine } }
-            }
-            Loader {
-                anchors.fill: parent
-                active: !!(plasmoid.configuration.showAnimations && animationsLayers.visible)
-                source: "animations/orage.qml"
-                opacity: animationsLayers.showOrage ? 1.0 : 0.0
-                visible: opacity > 0.01
-                Behavior on opacity { NumberAnimation { duration: 1100; easing.type: Easing.InOutSine } }
-            }
-            Loader {
-                anchors.fill: parent
-                active: !!(plasmoid.configuration.showAnimations && animationsLayers.visible)
-                source: "animations/neige.qml"
-                opacity: animationsLayers.showNeige ? 1.0 : 0.0
-                visible: opacity > 0.01
-                Behavior on opacity { NumberAnimation { duration: 1100; easing.type: Easing.InOutSine } }
-            }
-            Loader {
-                anchors.fill: parent
-                active: !!(plasmoid.configuration.showAnimations && animationsLayers.visible)
-                source: "animations/pluie.qml"
-                opacity: animationsLayers.showPluie ? 1.0 : 0.0
-                visible: opacity > 0.01
-                Behavior on opacity { NumberAnimation { duration: 1100; easing.type: Easing.InOutSine } }
-            }
-            Loader {
-                anchors.fill: parent
-                active: !!(plasmoid.configuration.showAnimations && animationsLayers.visible)
-                source: "animations/bruine.qml"
-                opacity: animationsLayers.showBruine ? 1.0 : 0.0
-                visible: opacity > 0.01
-                Behavior on opacity { NumberAnimation { duration: 1100; easing.type: Easing.InOutSine } }
-            }
-            Loader {
-                anchors.fill: parent
-                active: !!(plasmoid.configuration.showAnimations && animationsLayers.visible)
-                source: "animations/brume.qml"
-                opacity: animationsLayers.showBrume ? 1.0 : 0.0
-                visible: opacity > 0.01
-                Behavior on opacity { NumberAnimation { duration: 1100; easing.type: Easing.InOutSine } }
-            }
-            // Vent : même traitement de cohérence — windValue suit déjà
-            // viewedHour, donc sans ce fondu le vent apparaîtrait/
-            // disparaîtrait brutalement pendant le survol alors que tous
-            // les autres effets de fond sont désormais en transition douce.
-            Loader {
-                anchors.fill: parent
-                active: !!(plasmoid.configuration.showAnimations && animationsLayers.visible)
-                source: "animations/vent.qml"
-                opacity: animationsLayers.windValue >= 20 ? 1.0 : 0.0
-                visible: opacity > 0.01
-                Behavior on opacity { NumberAnimation { duration: 1100; easing.type: Easing.InOutSine } }
+                // --- Soleil / Nuit en fondu croisé ---
+                // Avant : un seul Loader dont la "source" basculait entre les
+                // deux animations selon isDay. À chaque bascule, QML détruit
+                // entièrement l'ancien composant et instancie le nouveau —
+                // d'où la coupure nette. Ici, les deux animations restent
+                // chargées en permanence (donc jamais détruites/recréées) et on
+                // fait varier leur opacité en sens inverse avec un Behavior :
+                // le changement devient un fondu doux plutôt qu'un instantané.
+                // Comme isDay peut changer plusieurs fois rapidement pendant un
+                // survol de la courbe, le Behavior se "retargete" en douceur à
+                // chaque nouvelle valeur sans jamais sembler saccadé.
+                Loader {
+                    anchors.fill: parent
+                    active: !!(plasmoid.configuration.showAnimations && animationsLayers.visible)
+                    source: "animations/soleil.qml"
+                    opacity: animationsLayers.isDay ? 1.0 : 0.0
+                    visible: opacity > 0.01
+                    Behavior on opacity { NumberAnimation { duration: 1100; easing.type: Easing.InOutSine } }
+                }
+                Loader {
+                    anchors.fill: parent
+                    active: !!(plasmoid.configuration.showAnimations && animationsLayers.visible)
+                    source: "animations/nuit.qml"
+                    opacity: animationsLayers.isDay ? 0.0 : 1.0
+                    visible: opacity > 0.01
+                    Behavior on opacity { NumberAnimation { duration: 1100; easing.type: Easing.InOutSine } }
+                }
+                // --- Effets météo (nuage / pluie / neige / etc.) en fondu ---
+                // Même principe que Soleil/Nuit ci-dessus : avant, un Loader
+                // unique changeait de "source" selon le code météo, ce qui
+                // détruisait et recréait l'effet à chaque bascule — coupure
+                // nette, et de toute façon weatherCode ne suivait pas l'heure
+                // survolée donc l'effet ne changeait jamais pendant un survol.
+                // Maintenant que weatherCode suit viewedHour, le survol de la
+                // courbe peut faire défiler plusieurs conditions météo dans la
+                // même journée ; chaque effet reste chargé en permanence et
+                // seule son opacité varie, avec le même Behavior (1100ms) que
+                // pour isDay, pour un fondu cohérent entre tous les effets de
+                // fond plutôt qu'un instantané pour les uns et un fondu pour
+                // les autres.
+                readonly property bool showCloud:  weatherCode >= 3 && weatherCode !== 45 && weatherCode !== 48
+                readonly property bool showOrage:  weatherCode >= 95
+                readonly property bool showNeige:  (weatherCode >= 71 && weatherCode <= 77) || weatherCode === 85 || weatherCode === 86
+                readonly property bool showPluie:  (weatherCode >= 61 && weatherCode <= 67) || (weatherCode >= 80 && weatherCode <= 82)
+                readonly property bool showBruine: weatherCode >= 51 && weatherCode <= 57
+                readonly property bool showBrume:  weatherCode === 45 || weatherCode === 48
+
+                Loader {
+                    anchors.fill: parent
+                    active: !!(plasmoid.configuration.showAnimations && animationsLayers.visible)
+                    source: "animations/nuage.qml"
+                    opacity: animationsLayers.showCloud ? 1.0 : 0.0
+                    visible: opacity > 0.01
+                    Behavior on opacity { NumberAnimation { duration: 1100; easing.type: Easing.InOutSine } }
+                }
+                Loader {
+                    anchors.fill: parent
+                    active: !!(plasmoid.configuration.showAnimations && animationsLayers.visible)
+                    source: "animations/orage.qml"
+                    opacity: animationsLayers.showOrage ? 1.0 : 0.0
+                    visible: opacity > 0.01
+                    Behavior on opacity { NumberAnimation { duration: 1100; easing.type: Easing.InOutSine } }
+                }
+                Loader {
+                    anchors.fill: parent
+                    active: !!(plasmoid.configuration.showAnimations && animationsLayers.visible)
+                    source: "animations/neige.qml"
+                    opacity: animationsLayers.showNeige ? 1.0 : 0.0
+                    visible: opacity > 0.01
+                    Behavior on opacity { NumberAnimation { duration: 1100; easing.type: Easing.InOutSine } }
+                }
+                Loader {
+                    anchors.fill: parent
+                    active: !!(plasmoid.configuration.showAnimations && animationsLayers.visible)
+                    source: "animations/pluie.qml"
+                    opacity: animationsLayers.showPluie ? 1.0 : 0.0
+                    visible: opacity > 0.01
+                    Behavior on opacity { NumberAnimation { duration: 1100; easing.type: Easing.InOutSine } }
+                }
+                Loader {
+                    anchors.fill: parent
+                    active: !!(plasmoid.configuration.showAnimations && animationsLayers.visible)
+                    source: "animations/bruine.qml"
+                    opacity: animationsLayers.showBruine ? 1.0 : 0.0
+                    visible: opacity > 0.01
+                    Behavior on opacity { NumberAnimation { duration: 1100; easing.type: Easing.InOutSine } }
+                }
+                Loader {
+                    anchors.fill: parent
+                    active: !!(plasmoid.configuration.showAnimations && animationsLayers.visible)
+                    source: "animations/brume.qml"
+                    opacity: animationsLayers.showBrume ? 1.0 : 0.0
+                    visible: opacity > 0.01
+                    Behavior on opacity { NumberAnimation { duration: 1100; easing.type: Easing.InOutSine } }
+                }
+                // Vent : même traitement de cohérence — windValue suit déjà
+                // viewedHour, donc sans ce fondu le vent apparaîtrait/
+                // disparaîtrait brutalement pendant le survol alors que tous
+                // les autres effets de fond sont désormais en transition douce.
+                Loader {
+                    anchors.fill: parent
+                    active: !!(plasmoid.configuration.showAnimations && animationsLayers.visible)
+                    source: "animations/vent.qml"
+                    opacity: animationsLayers.windValue >= 20 ? 1.0 : 0.0
+                    visible: opacity > 0.01
+                    Behavior on opacity { NumberAnimation { duration: 1100; easing.type: Easing.InOutSine } }
+                }
             }
         }
-    }
+    } // fin backgroundClipWrapper
 
     // --- 2. LAYOUT PRINCIPAL ---
     Item {
@@ -792,6 +833,8 @@ Item {
 
                 preciseTemp: root.preciseTempChart
                 chartType:   rootItem.activeChart
+                yAxisReadingEnabled: root.enableYAxisReading
+                showCursorDecimals: root.showCursorDecimals
             }
 
             RowLayout {

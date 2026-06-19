@@ -48,78 +48,6 @@ msgstr "Chỉ số UV"
 msgid "Wind"
 msgstr "Gió"
 
-msgid "General"
-msgstr "Cài đặt chung"
-
-msgid "Automatic Location (IP):"
-msgstr "Vị trí tự động (IP):"
-
-msgid "Latitude:"
-msgstr "Vĩ độ:"
-
-msgid "Longitude:"
-msgstr "Kinh độ:"
-
-msgid "Temperature & Speed Unit:"
-msgstr "Đơn vị Nhiệt độ & Tốc độ:"
-
-msgid "(°C) / (km/h)"
-msgstr "(°C) / (km/h)"
-
-msgid "(°F) / (mph)"
-msgstr "(°F) / (mph)"
-
-msgid "Update Interval (min):"
-msgstr "Khoảng thời gian cập nhật (phút):"
-
-msgid "Show temperature:"
-msgstr "Hiển thị nhiệt độ:"
-
-msgid "Show condition text:"
-msgstr "Hiển thị văn bản điều kiện:"
-
-msgid "Show condition text (panel):"
-msgstr "Hiển thị văn bản điều kiện (bảng điều khiển):"
-
-msgid "Show condition text (Full view):"
-msgstr "Hiển thị văn bản điều kiện (Chế độ xem đầy đủ):"
-
-msgid "Show decimals (only panel):"
-msgstr "Hiển thị số thập phân (chỉ bảng):"
-
-msgid "Show decimals on charts:"
-msgstr "Hiển thị số thập phân trên biểu đồ:"
-
-msgid "Reverse Temp/Condition order:"
-msgstr "Đảo ngược thứ tự Nhiệt độ/Điều kiện:"
-
-msgid "Border radius (desktop view):"
-msgstr "Bán kính viền (chế độ xem máy tính):"
-
-msgid "Temperature font size:"
-msgstr "Cỡ chữ nhiệt độ:"
-
-msgid "Bold temperature:"
-msgstr "Nhiệt độ in đậm:"
-
-msgid "Condition font size:"
-msgstr "Cỡ chữ điều kiện:"
-
-msgid "Bold condition text:"
-msgstr "Văn bản điều kiện in đậm:"
-
-msgid "Details to show:"
-msgstr "Chi tiết hiển thị:"
-
-msgid "Apparent Temperature"
-msgstr "Nhiệt độ Cảm giác"
-
-msgid "Wind Speed"
-msgstr "Tốc độ Gió"
-
-msgid "Forecast start day offset:"
-msgstr "Bù ngày bắt đầu dự báo:"
-
 msgid "Feels"
 msgstr "C.giác"
 
@@ -132,11 +60,128 @@ msgstr "UV"
 msgid "Temp."
 msgstr "N.độ"
 
-msgid "Enable weather animations:"
-msgstr "Bật hiệu ứng thời tiết:"
+msgid "Restore default settings?"
+msgstr "Khôi phục cài đặt mặc định?"
 
-msgid "Refresh Weather Data"
-msgstr "Cập nhật dữ liệu thời tiết"
+msgid "All settings on this page will be reset to their defaults. This cannot be undone."
+msgstr "Tất cả cài đặt trên trang này sẽ được đặt lại về mặc định. Hành động này không thể hoàn tác."
 
-msgid "Manual Actions:"
-msgstr "Thao tác thủ công:"
+msgid "Location"
+msgstr "Vị trí"
+
+msgid "Automatic location (IP):"
+msgstr "Vị trí tự động (IP):"
+
+msgid "Coordinates:"
+msgstr "Tọa độ:"
+
+msgid "Latitude"
+msgstr "Vĩ độ"
+
+msgid "Longitude"
+msgstr "Kinh độ"
+
+msgid "Units & updates"
+msgstr "Đơn vị & cập nhật"
+
+msgid "Units:"
+msgstr "Đơn vị:"
+
+msgid "Update interval:"
+msgstr "Khoảng thời gian cập nhật:"
+
+msgid "Refresh now"
+msgstr "Làm mới ngay"
+
+msgid "Style"
+msgstr "Giao diện"
+
+msgid "Panel"
+msgstr "Bảng điều khiển"
+
+msgid "Show:"
+msgstr "Hiển thị:"
+
+msgid "Temperature"
+msgstr "Nhiệt độ"
+
+msgid "Condition"
+msgstr "Điều kiện"
+
+msgid "Reverse order"
+msgstr "Đảo ngược thứ tự"
+
+msgid "Temperature font:"
+msgstr "Phông chữ nhiệt độ:"
+
+msgid "Bold"
+msgstr "In đậm"
+
+msgid "Condition font:"
+msgstr "Phông chữ điều kiện:"
+
+msgid "Decimals:"
+msgstr "Số thập phân:"
+
+msgid "Full view"
+msgstr "Chế độ xem đầy đủ"
+
+msgid "Condition:"
+msgstr "Điều kiện:"
+
+msgid "Chart decimals:"
+msgstr "Số thập phân biểu đồ:"
+
+msgid "Cursor decimals:"
+msgstr "Số thập phân con trỏ:"
+
+msgid "Shows one decimal while hovering the chart.\nWithout it, the value only updates at whole numbers and can appear stuck as you move along."
+msgstr "Hiển thị một số thập phân khi di chuột qua biểu đồ.\nNếu không có nó, giá trị chỉ cập nhật ở các số nguyên và có vẻ như bị kẹt khi bạn di chuyển."
+
+msgid "Y-axis reading:"
+msgstr "Đọc trục Y:"
+
+msgid "Hover the left edge of the chart to read a value off the Y axis instead of following the curve."
+msgstr "Di chuột qua cạnh trái của biểu đồ để đọc giá trị ngoài trục Y thay vì theo đường cong."
+
+msgid "Weather animations:"
+msgstr "Hiệu ứng thời tiết:"
+
+msgid "Details:"
+msgstr "Chi tiết:"
+
+msgid "Apparent temp."
+msgstr "Nhiệt độ cảm nhận"
+
+msgid "UV index"
+msgstr "Chỉ số UV"
+
+msgid "Wind speed"
+msgstr "Tốc độ gió"
+
+msgid "Desktop widget:"
+msgstr "Tiện ích trên màn hình:"
+
+msgid "Radius"
+msgstr "Bán kính"
+
+msgid "Opacity"
+msgstr "Độ mờ"
+
+msgid "Only applies when the widget sits directly on the desktop, not in a panel popup."
+msgstr "Chỉ áp dụng khi tiện ích nằm trực tiếp trên màn hình, không phải trong cửa sổ bật lên của bảng điều khiển."
+
+msgid "Forecast"
+msgstr "Dự báo"
+
+msgid "Start day offset:"
+msgstr "Độ lệch ngày bắt đầu:"
+
+msgid "Data"
+msgstr "Dữ liệu"
+
+msgid "Settings:"
+msgstr "Cài đặt:"
+
+msgid "Restore default settings"
+msgstr "Khôi phục cài đặt mặc định"

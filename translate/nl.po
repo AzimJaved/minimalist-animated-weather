@@ -48,78 +48,6 @@ msgstr "UV-index"
 msgid "Wind"
 msgstr "Wind"
 
-msgid "General"
-msgstr "Algemeen"
-
-msgid "Automatic Location (IP):"
-msgstr "Automatische locatie (IP):"
-
-msgid "Latitude:"
-msgstr "Breedtegraad:"
-
-msgid "Longitude:"
-msgstr "Lengtegraad:"
-
-msgid "Temperature & Speed Unit:"
-msgstr "Temperatuur en Snelheid Eenheid:"
-
-msgid "(°C) / (km/h)"
-msgstr "(°C) / (km/h)"
-
-msgid "(°F) / (mph)"
-msgstr "(°F) / (mph)"
-
-msgid "Update Interval (min):"
-msgstr "Update-interval (min):"
-
-msgid "Show temperature:"
-msgstr "Temperatuur tonen:"
-
-msgid "Show condition text:"
-msgstr "Conditietekst tonen:"
-
-msgid "Show condition text (panel):"
-msgstr "Conditietekst tonen (paneel):"
-
-msgid "Show condition text (Full view):"
-msgstr "Conditietekst tonen (Volledige weergave):"
-
-msgid "Show decimals (only panel):"
-msgstr "Decimalen tonen (alleen paneel):"
-
-msgid "Show decimals on charts:"
-msgstr "Decimalen tonen op grafieken:"
-
-msgid "Reverse Temp/Condition order:"
-msgstr "Volgorde Temp/Conditie omkeren:"
-
-msgid "Border radius (desktop view):"
-msgstr "Randradius (desktop weergave):"
-
-msgid "Temperature font size:"
-msgstr "Lettergrootte temperatuur:"
-
-msgid "Bold temperature:"
-msgstr "Vetgedrukte temperatuur:"
-
-msgid "Condition font size:"
-msgstr "Lettergrootte conditie:"
-
-msgid "Bold condition text:"
-msgstr "Vetgedrukte conditietekst:"
-
-msgid "Details to show:"
-msgstr "Te tonen details:"
-
-msgid "Apparent Temperature"
-msgstr "Gevoelstemperatuur"
-
-msgid "Wind Speed"
-msgstr "Windsnelheid"
-
-msgid "Forecast start day offset:"
-msgstr "Startdag offset voorspelling:"
-
 msgid "Feels"
 msgstr "Gevoel"
 
@@ -132,11 +60,128 @@ msgstr "UV"
 msgid "Temp."
 msgstr "Temp."
 
-msgid "Enable weather animations:"
-msgstr "Weeranimaties inschakelen:"
+msgid "Restore default settings?"
+msgstr "Standaardinstellingen herstellen?"
 
-msgid "Refresh Weather Data"
-msgstr "Weergegevens vernieuwen"
+msgid "All settings on this page will be reset to their defaults. This cannot be undone."
+msgstr "Alle instellingen op deze pagina worden teruggezet naar de standaardwaarden. Dit kan niet ongedaan worden gemaakt."
 
-msgid "Manual Actions:"
-msgstr "Handmatige acties:"
+msgid "Location"
+msgstr "Locatie"
+
+msgid "Automatic location (IP):"
+msgstr "Automatische locatie (IP):"
+
+msgid "Coordinates:"
+msgstr "Coördinaten:"
+
+msgid "Latitude"
+msgstr "Breedtegraad"
+
+msgid "Longitude"
+msgstr "Lengtegraad"
+
+msgid "Units & updates"
+msgstr "Eenheden & updates"
+
+msgid "Units:"
+msgstr "Eenheden:"
+
+msgid "Update interval:"
+msgstr "Update-interval:"
+
+msgid "Refresh now"
+msgstr "Nu vernieuwen"
+
+msgid "Style"
+msgstr "Stijl"
+
+msgid "Panel"
+msgstr "Paneel"
+
+msgid "Show:"
+msgstr "Tonen:"
+
+msgid "Temperature"
+msgstr "Temperatuur"
+
+msgid "Condition"
+msgstr "Conditie"
+
+msgid "Reverse order"
+msgstr "Volgorde omkeren"
+
+msgid "Temperature font:"
+msgstr "Lettertype temperatuur:"
+
+msgid "Bold"
+msgstr "Vet"
+
+msgid "Condition font:"
+msgstr "Lettertype conditie:"
+
+msgid "Decimals:"
+msgstr "Decimalen:"
+
+msgid "Full view"
+msgstr "Volledige weergave"
+
+msgid "Condition:"
+msgstr "Conditie:"
+
+msgid "Chart decimals:"
+msgstr "Grafiek decimalen:"
+
+msgid "Cursor decimals:"
+msgstr "Cursor decimalen:"
+
+msgid "Shows one decimal while hovering the chart.\nWithout it, the value only updates at whole numbers and can appear stuck as you move along."
+msgstr "Toont één decimaal wanneer u over de grafiek zweeft.\nZonder dit wordt de waarde alleen bij hele getallen bijgewerkt en kan deze vast lijken te zitten tijdens het verplaatsen."
+
+msgid "Y-axis reading:"
+msgstr "Y-as aflezing:"
+
+msgid "Hover the left edge of the chart to read a value off the Y axis instead of following the curve."
+msgstr "Zweef over de linkerrand van de grafiek om een waarde van de Y-as af te lezen in plaats van de curve te volgen."
+
+msgid "Weather animations:"
+msgstr "Weeranimaties:"
+
+msgid "Details:"
+msgstr "Details:"
+
+msgid "Apparent temp."
+msgstr "Gevoelstemp."
+
+msgid "UV index"
+msgstr "UV-index"
+
+msgid "Wind speed"
+msgstr "Windsnelheid"
+
+msgid "Desktop widget:"
+msgstr "Desktop widget:"
+
+msgid "Radius"
+msgstr "Radius"
+
+msgid "Opacity"
+msgstr "Ondoorzichtigheid"
+
+msgid "Only applies when the widget sits directly on the desktop, not in a panel popup."
+msgstr "Alleen van toepassing wanneer de widget direct op het bureaublad staat, niet in een paneel pop-up."
+
+msgid "Forecast"
+msgstr "Voorspelling"
+
+msgid "Start day offset:"
+msgstr "Startdag offset:"
+
+msgid "Data"
+msgstr "Gegevens"
+
+msgid "Settings:"
+msgstr "Instellingen:"
+
+msgid "Restore default settings"
+msgstr "Standaardinstellingen herstellen"

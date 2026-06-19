@@ -48,78 +48,6 @@ msgstr "Índice UV"
 msgid "Wind"
 msgstr "Vento"
 
-msgid "General"
-msgstr "Geral"
-
-msgid "Automatic Location (IP):"
-msgstr "Localização automática (IP):"
-
-msgid "Latitude:"
-msgstr "Latitude:"
-
-msgid "Longitude:"
-msgstr "Longitude:"
-
-msgid "Temperature & Speed Unit:"
-msgstr "Unidade de temperatura e velocidade:"
-
-msgid "(°C) / (km/h)"
-msgstr "(°C) / (km/h)"
-
-msgid "(°F) / (mph)"
-msgstr "(°F) / (mph)"
-
-msgid "Update Interval (min):"
-msgstr "Intervalo de atualização (min):"
-
-msgid "Show temperature:"
-msgstr "Mostrar temperatura:"
-
-msgid "Show condition text:"
-msgstr "Mostrar texto de condição:"
-
-msgid "Show condition text (panel):"
-msgstr "Mostrar texto de condição (painel):"
-
-msgid "Show condition text (Full view):"
-msgstr "Mostrar texto de condição (Vista detalhada):"
-
-msgid "Show decimals (only panel):"
-msgstr "Mostrar decimais (apenas painel):"
-
-msgid "Show decimals on charts:"
-msgstr "Mostrar decimais nos gráficos:"
-
-msgid "Reverse Temp/Condition order:"
-msgstr "Inverter ordem Temp/Condição:"
-
-msgid "Border radius (desktop view):"
-msgstr "Raio da borda (vista desktop):"
-
-msgid "Temperature font size:"
-msgstr "Tamanho da fonte da temperatura:"
-
-msgid "Bold temperature:"
-msgstr "Temperatura em negrito:"
-
-msgid "Condition font size:"
-msgstr "Tamanho da fonte da condição:"
-
-msgid "Bold condition text:"
-msgstr "Texto de condição em negrito:"
-
-msgid "Details to show:"
-msgstr "Detalhes a mostrar:"
-
-msgid "Apparent Temperature"
-msgstr "Temperatura aparente"
-
-msgid "Wind Speed"
-msgstr "Velocidade do vento"
-
-msgid "Forecast start day offset:"
-msgstr "Deslocamento do dia de início da previsão:"
-
 msgid "Feels"
 msgstr "Sens."
 
@@ -132,11 +60,128 @@ msgstr "UV"
 msgid "Temp."
 msgstr "Temp."
 
-msgid "Enable weather animations:"
-msgstr "Ativar animações meteorológicas:"
+msgid "Restore default settings?"
+msgstr "Restaurar definições padrão?"
 
-msgid "Refresh Weather Data"
-msgstr "Atualizar dados meteorológicos"
+msgid "All settings on this page will be reset to their defaults. This cannot be undone."
+msgstr "Todas as definições nesta página serão repostas para os valores padrão. Esta ação não pode ser desfeita."
 
-msgid "Manual Actions:"
-msgstr "Ações manuais:"
+msgid "Location"
+msgstr "Localização"
+
+msgid "Automatic location (IP):"
+msgstr "Localização automática (IP):"
+
+msgid "Coordinates:"
+msgstr "Coordenadas:"
+
+msgid "Latitude"
+msgstr "Latitude"
+
+msgid "Longitude"
+msgstr "Longitude"
+
+msgid "Units & updates"
+msgstr "Unidades e atualizações"
+
+msgid "Units:"
+msgstr "Unidades:"
+
+msgid "Update interval:"
+msgstr "Intervalo de atualização:"
+
+msgid "Refresh now"
+msgstr "Atualizar agora"
+
+msgid "Style"
+msgstr "Estilo"
+
+msgid "Panel"
+msgstr "Painel"
+
+msgid "Show:"
+msgstr "Mostrar:"
+
+msgid "Temperature"
+msgstr "Temperatura"
+
+msgid "Condition"
+msgstr "Condição"
+
+msgid "Reverse order"
+msgstr "Inverter ordem"
+
+msgid "Temperature font:"
+msgstr "Fonte da temperatura:"
+
+msgid "Bold"
+msgstr "Negrito"
+
+msgid "Condition font:"
+msgstr "Fonte da condição:"
+
+msgid "Decimals:"
+msgstr "Decimais:"
+
+msgid "Full view"
+msgstr "Vista detalhada"
+
+msgid "Condition:"
+msgstr "Condição:"
+
+msgid "Chart decimals:"
+msgstr "Decimais no gráfico:"
+
+msgid "Cursor decimals:"
+msgstr "Decimais no cursor:"
+
+msgid "Shows one decimal while hovering the chart.\nWithout it, the value only updates at whole numbers and can appear stuck as you move along."
+msgstr "Mostra uma casa decimal ao passar o rato sobre o gráfico.\nSem isso, o valor apenas se atualiza em números inteiros e pode parecer bloqueado ao mover-se."
+
+msgid "Y-axis reading:"
+msgstr "Leitura no eixo Y:"
+
+msgid "Hover the left edge of the chart to read a value off the Y axis instead of following the curve."
+msgstr "Passe o rato sobre a margem esquerda do gráfico para ler um valor do eixo Y em vez de seguir a curva."
+
+msgid "Weather animations:"
+msgstr "Animações meteorológicas:"
+
+msgid "Details:"
+msgstr "Detalhes:"
+
+msgid "Apparent temp."
+msgstr "Temp. aparente"
+
+msgid "UV index"
+msgstr "Índice UV"
+
+msgid "Wind speed"
+msgstr "Velocidade do vento"
+
+msgid "Desktop widget:"
+msgstr "Widget do ambiente de trabalho:"
+
+msgid "Radius"
+msgstr "Raio"
+
+msgid "Opacity"
+msgstr "Opacidade"
+
+msgid "Only applies when the widget sits directly on the desktop, not in a panel popup."
+msgstr "Aplica-se apenas quando o widget se encontra diretamente no ambiente de trabalho, e não num pop-up do painel."
+
+msgid "Forecast"
+msgstr "Previsão"
+
+msgid "Start day offset:"
+msgstr "Deslocamento do dia de início:"
+
+msgid "Data"
+msgstr "Dados"
+
+msgid "Settings:"
+msgstr "Definições:"
+
+msgid "Restore default settings"
+msgstr "Restaurar definições padrão"

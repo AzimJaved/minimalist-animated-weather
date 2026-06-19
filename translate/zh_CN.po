@@ -48,78 +48,6 @@ msgstr "UV指数"
 msgid "Wind"
 msgstr "风"
 
-msgid "General"
-msgstr "常规"
-
-msgid "Automatic Location (IP):"
-msgstr "自动定位 (IP):"
-
-msgid "Latitude:"
-msgstr "纬度:"
-
-msgid "Longitude:"
-msgstr "经度:"
-
-msgid "Temperature & Speed Unit:"
-msgstr "温度和速度单位:"
-
-msgid "(°C) / (km/h)"
-msgstr "(°C) / (km/h)"
-
-msgid "(°F) / (mph)"
-msgstr "(°F) / (mph)"
-
-msgid "Update Interval (min):"
-msgstr "更新间隔 (分钟):"
-
-msgid "Show temperature:"
-msgstr "显示温度:"
-
-msgid "Show condition text:"
-msgstr "显示天气状况文本:"
-
-msgid "Show condition text (panel):"
-msgstr "显示天气状况文本 (面板):"
-
-msgid "Show condition text (Full view):"
-msgstr "显示天气状况文本 (详细视图):"
-
-msgid "Show decimals (only panel):"
-msgstr "显示小数 (仅面板):"
-
-msgid "Show decimals on charts:"
-msgstr "在图表上显示小数:"
-
-msgid "Reverse Temp/Condition order:"
-msgstr "反转温度/天气状况顺序:"
-
-msgid "Border radius (desktop view):"
-msgstr "边框半径 (桌面视图):"
-
-msgid "Temperature font size:"
-msgstr "温度字体大小:"
-
-msgid "Bold temperature:"
-msgstr "温度加粗:"
-
-msgid "Condition font size:"
-msgstr "天气状况字体大小:"
-
-msgid "Bold condition text:"
-msgstr "天气状况文本加粗:"
-
-msgid "Details to show:"
-msgstr "显示详情:"
-
-msgid "Apparent Temperature"
-msgstr "体感温度"
-
-msgid "Wind Speed"
-msgstr "风速"
-
-msgid "Forecast start day offset:"
-msgstr "预报开始日偏移:"
-
 msgid "Feels"
 msgstr "体感"
 
@@ -132,11 +60,128 @@ msgstr "UV"
 msgid "Temp."
 msgstr "温度"
 
-msgid "Enable weather animations:"
-msgstr "启用天气动画:"
+msgid "Restore default settings?"
+msgstr "恢复默认设置？"
 
-msgid "Refresh Weather Data"
-msgstr "刷新天气数据"
+msgid "All settings on this page will be reset to their defaults. This cannot be undone."
+msgstr "此页面上的所有设置将重置为默认值。此操作无法撤销。"
 
-msgid "Manual Actions:"
-msgstr "手动操作:"
+msgid "Location"
+msgstr "位置"
+
+msgid "Automatic location (IP):"
+msgstr "自动定位 (IP):"
+
+msgid "Coordinates:"
+msgstr "坐标:"
+
+msgid "Latitude"
+msgstr "纬度"
+
+msgid "Longitude"
+msgstr "经度"
+
+msgid "Units & updates"
+msgstr "单位与更新"
+
+msgid "Units:"
+msgstr "单位:"
+
+msgid "Update interval:"
+msgstr "更新间隔:"
+
+msgid "Refresh now"
+msgstr "立即刷新"
+
+msgid "Style"
+msgstr "样式"
+
+msgid "Panel"
+msgstr "面板"
+
+msgid "Show:"
+msgstr "显示:"
+
+msgid "Temperature"
+msgstr "温度"
+
+msgid "Condition"
+msgstr "天气状况"
+
+msgid "Reverse order"
+msgstr "反转顺序"
+
+msgid "Temperature font:"
+msgstr "温度字体:"
+
+msgid "Bold"
+msgstr "加粗"
+
+msgid "Condition font:"
+msgstr "天气状况字体:"
+
+msgid "Decimals:"
+msgstr "小数:"
+
+msgid "Full view"
+msgstr "详细视图"
+
+msgid "Condition:"
+msgstr "天气状况:"
+
+msgid "Chart decimals:"
+msgstr "图表小数:"
+
+msgid "Cursor decimals:"
+msgstr "光标小数:"
+
+msgid "Shows one decimal while hovering the chart.\nWithout it, the value only updates at whole numbers and can appear stuck as you move along."
+msgstr "在图表上悬停时显示一位小数。\n如果没有该选项，数值只会以整数更新，在移动时可能会显得卡顿。"
+
+msgid "Y-axis reading:"
+msgstr "Y轴读数:"
+
+msgid "Hover the left edge of the chart to read a value off the Y axis instead of following the curve."
+msgstr "将光标悬停在图表左边缘可从 Y 轴读取数值，而不是跟随曲线移动。"
+
+msgid "Weather animations:"
+msgstr "天气动画:"
+
+msgid "Details:"
+msgstr "详细信息:"
+
+msgid "Apparent temp."
+msgstr "体感温度"
+
+msgid "UV index"
+msgstr "UV指数"
+
+msgid "Wind speed"
+msgstr "风速"
+
+msgid "Desktop widget:"
+msgstr "桌面小部件:"
+
+msgid "Radius"
+msgstr "圆角"
+
+msgid "Opacity"
+msgstr "不透明度"
+
+msgid "Only applies when the widget sits directly on the desktop, not in a panel popup."
+msgstr "仅当小部件直接放置在桌面上时适用，在面板弹出窗口中无效。"
+
+msgid "Forecast"
+msgstr "预报"
+
+msgid "Start day offset:"
+msgstr "起始日偏移:"
+
+msgid "Data"
+msgstr "数据"
+
+msgid "Settings:"
+msgstr "设置:"
+
+msgid "Restore default settings"
+msgstr "恢复默认设置"

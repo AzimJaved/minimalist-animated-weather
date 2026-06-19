@@ -48,78 +48,6 @@ msgstr "مؤشر الأشعة فوق البنفسجية"
 msgid "Wind"
 msgstr "الرياح"
 
-msgid "General"
-msgstr "عام"
-
-msgid "Automatic Location (IP):"
-msgstr "الموقع التلقائي (IP):"
-
-msgid "Latitude:"
-msgstr "خط العرض:"
-
-msgid "Longitude:"
-msgstr "خط الطول:"
-
-msgid "Temperature & Speed Unit:"
-msgstr "وحدة الحرارة والسرعة:"
-
-msgid "(°C) / (km/h)"
-msgstr "(°C) / (km/h)"
-
-msgid "(°F) / (mph)"
-msgstr "(°F) / (mph)"
-
-msgid "Update Interval (min):"
-msgstr "فترة التحديث (بالدقائق):"
-
-msgid "Show temperature:"
-msgstr "إظهار درجة الحرارة:"
-
-msgid "Show condition text:"
-msgstr "إظهار نص الحالة الطقسية:"
-
-msgid "Show condition text (panel):"
-msgstr "إظهار نص الحالة الطقسية (اللوحة):"
-
-msgid "Show condition text (Full view):"
-msgstr "إظهار نص الحالة الطقسية (العرض الكامل):"
-
-msgid "Show decimals (only panel):"
-msgstr "إظهار الخانات العشرية (في اللوحة فقط):"
-
-msgid "Show decimals on charts:"
-msgstr "إظهار الخانات العشرية على الرسوم البيانية:"
-
-msgid "Reverse Temp/Condition order:"
-msgstr "عكس ترتيب الحرارة/الحالة:"
-
-msgid "Border radius (desktop view):"
-msgstr "نصف قطر الحدود (عرض سطح المكتب):"
-
-msgid "Temperature font size:"
-msgstr "حجم خط درجة الحرارة:"
-
-msgid "Bold temperature:"
-msgstr "درجة الحرارة بخط عريض:"
-
-msgid "Condition font size:"
-msgstr "حجم خط الحالة الطقسية:"
-
-msgid "Bold condition text:"
-msgstr "نص الحالة بخط عريض:"
-
-msgid "Details to show:"
-msgstr "التفاصيل المراد إظهارها:"
-
-msgid "Apparent Temperature"
-msgstr "الحرارة الظاهرية"
-
-msgid "Wind Speed"
-msgstr "سرعة الرياح"
-
-msgid "Forecast start day offset:"
-msgstr "إزاحة يوم بدء التوقعات:"
-
 msgid "Feels"
 msgstr "ملموسة"
 
@@ -132,11 +60,128 @@ msgstr "UV"
 msgid "Temp."
 msgstr "حرارة"
 
-msgid "Enable weather animations:"
-msgstr "تفعيل حركات الطقس:"
+msgid "Restore default settings?"
+msgstr "هل تريد استعادة الإعدادات الافتراضية؟"
 
-msgid "Refresh Weather Data"
-msgstr "تحديث بيانات الطقس"
+msgid "All settings on this page will be reset to their defaults. This cannot be undone."
+msgstr "ستتم إعادة تعيين جميع الإعدادات في هذه الصفحة إلى قيمها الافتراضية. لا يمكن التراجع عن هذا الإجراء."
 
-msgid "Manual Actions:"
-msgstr "إجراءات يدوية:"
+msgid "Location"
+msgstr "الموقع"
+
+msgid "Automatic location (IP):"
+msgstr "الموقع التلقائي (IP):"
+
+msgid "Coordinates:"
+msgstr "الإحداثيات:"
+
+msgid "Latitude"
+msgstr "خط العرض"
+
+msgid "Longitude"
+msgstr "خط الطول"
+
+msgid "Units & updates"
+msgstr "الوحدات والتحديثات"
+
+msgid "Units:"
+msgstr "الوحدات:"
+
+msgid "Update interval:"
+msgstr "فترة التحديث:"
+
+msgid "Refresh now"
+msgstr "تحديث الآن"
+
+msgid "Style"
+msgstr "النمط"
+
+msgid "Panel"
+msgstr "اللوحة"
+
+msgid "Show:"
+msgstr "إظهار:"
+
+msgid "Temperature"
+msgstr "درجة الحرارة"
+
+msgid "Condition"
+msgstr "الحالة"
+
+msgid "Reverse order"
+msgstr "عكس الترتيب"
+
+msgid "Temperature font:"
+msgstr "خط درجة الحرارة:"
+
+msgid "Bold"
+msgstr "عريض"
+
+msgid "Condition font:"
+msgstr "خط الحالة:"
+
+msgid "Decimals:"
+msgstr "الخانات العشرية:"
+
+msgid "Full view"
+msgstr "العرض الكامل"
+
+msgid "Condition:"
+msgstr "الحالة:"
+
+msgid "Chart decimals:"
+msgstr "الخانات العشرية للرسم البياني:"
+
+msgid "Cursor decimals:"
+msgstr "الخانات العشرية للمؤشر:"
+
+msgid "Shows one decimal while hovering the chart.\nWithout it, the value only updates at whole numbers and can appear stuck as you move along."
+msgstr "يعرض خانة عشرية واحدة عند التمرير فوق الرسم البياني.\nبدونها، يتم تحديث القيمة فقط عند الأرقام الصحيحة وقد تبدو متوقفة أثناء تحركك."
+
+msgid "Y-axis reading:"
+msgstr "قراءة المحور الصادي:"
+
+msgid "Hover the left edge of the chart to read a value off the Y axis instead of following the curve."
+msgstr "مرر فوق الحافة اليسرى للرسم البياني لقراءة قيمة من المحور الصادي بدلاً من تتبع المنحنى."
+
+msgid "Weather animations:"
+msgstr "حركات الطقس:"
+
+msgid "Details:"
+msgstr "التفاصيل:"
+
+msgid "Apparent temp."
+msgstr "الحرارة الظاهرية"
+
+msgid "UV index"
+msgstr "مؤشر UV"
+
+msgid "Wind speed"
+msgstr "سرعة الرياح"
+
+msgid "Desktop widget:"
+msgstr "أداة سطح المكتب:"
+
+msgid "Radius"
+msgstr "نصف القطر"
+
+msgid "Opacity"
+msgstr "الشفافية"
+
+msgid "Only applies when the widget sits directly on the desktop, not in a panel popup."
+msgstr "ينطبق فقط عندما تكون الأداة موجودة مباشرة على سطح المكتب، وليس في نافذة منبثقة للوحة."
+
+msgid "Forecast"
+msgstr "التوقعات"
+
+msgid "Start day offset:"
+msgstr "إزاحة يوم بدء التوقعات:"
+
+msgid "Data"
+msgstr "البيانات"
+
+msgid "Settings:"
+msgstr "الإعدادات:"
+
+msgid "Restore default settings"
+msgstr "استعادة الإعدادات الافتراضية"

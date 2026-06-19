@@ -17,6 +17,9 @@ PlasmoidItem {
   // Propriétés de configuration (Lien avec main.xml)
   property bool showConditionOnPanel: Plasmoid.configuration.showConditionOnPanel
   property int borderRadius: Plasmoid.configuration.borderRadius
+  property real backgroundOpacity: Plasmoid.configuration.backgroundOpacity
+  property bool enableYAxisReading: Plasmoid.configuration.enableYAxisReading
+  property bool showCursorDecimals: Plasmoid.configuration.showCursorDecimals
   property bool showAnimations: Plasmoid.configuration.showAnimations
   property bool boldTempPanel: Plasmoid.configuration.boldTempPanel
   property bool boldCondPanel: Plasmoid.configuration.boldCondPanel

@@ -49,78 +49,6 @@ msgstr "УФ-индекс"
 msgid "Wind"
 msgstr "Ветер"
 
-msgid "General"
-msgstr "Общие"
-
-msgid "Automatic Location (IP):"
-msgstr "Автоматическое местоположение (IP):"
-
-msgid "Latitude:"
-msgstr "Широта:"
-
-msgid "Longitude:"
-msgstr "Долгота:"
-
-msgid "Temperature & Speed Unit:"
-msgstr "Единицы температуры и скорости:"
-
-msgid "(°C) / (km/h)"
-msgstr "(°C) / (км/ч)"
-
-msgid "(°F) / (mph)"
-msgstr "(°F) / (миль/ч)"
-
-msgid "Update Interval (min):"
-msgstr "Интервал обновления (мин):"
-
-msgid "Show temperature:"
-msgstr "Показывать температуру:"
-
-msgid "Show condition text:"
-msgstr "Показывать описание погоды:"
-
-msgid "Show condition text (panel):"
-msgstr "Показывать описание погоды (панель):"
-
-msgid "Show condition text (Full view):"
-msgstr "Показывать описание погоды (полный вид):"
-
-msgid "Show decimals (only panel):"
-msgstr "Показывать десятые доли (только панель):"
-
-msgid "Show decimals on charts:"
-msgstr "Показывать десятые доли на графиках:"
-
-msgid "Reverse Temp/Condition order:"
-msgstr "Обратный порядок температуры и описания:"
-
-msgid "Border radius (desktop view):"
-msgstr "Радиус рамок (на рабочем столе):"
-
-msgid "Temperature font size:"
-msgstr "Размер шрифта температуры:"
-
-msgid "Bold temperature:"
-msgstr "Температура жирным:"
-
-msgid "Condition font size:"
-msgstr "Размер шрифта описания:"
-
-msgid "Bold condition text:"
-msgstr "Описание погоды жирным:"
-
-msgid "Details to show:"
-msgstr "Показывать детали:"
-
-msgid "Apparent Temperature"
-msgstr "Ощущается как"
-
-msgid "Wind Speed"
-msgstr "Скорость ветра"
-
-msgid "Forecast start day offset:"
-msgstr "Смещение начала прогноза:"
-
 msgid "Feels"
 msgstr "Ощущ."
 
@@ -133,11 +61,128 @@ msgstr "УФ"
 msgid "Temp."
 msgstr "Темп."
 
-msgid "Enable weather animations:"
-msgstr "Включить анимации погоды:"
+msgid "Restore default settings?"
+msgstr "Восстановить настройки по умолчанию?"
 
-msgid "Refresh Weather Data"
-msgstr "Обновить данные погоды"
+msgid "All settings on this page will be reset to their defaults. This cannot be undone."
+msgstr "Все настройки на этой странице будут сброшены до значений по умолчанию. Это действие нельзя отменить."
 
-msgid "Manual Actions:"
-msgstr "Ручные действия:"
+msgid "Location"
+msgstr "Местоположение"
+
+msgid "Automatic location (IP):"
+msgstr "Автоматическое местоположение (IP):"
+
+msgid "Coordinates:"
+msgstr "Координаты:"
+
+msgid "Latitude"
+msgstr "Широта"
+
+msgid "Longitude"
+msgstr "Долгота"
+
+msgid "Units & updates"
+msgstr "Единицы измерения и обновления"
+
+msgid "Units:"
+msgstr "Единицы измерения:"
+
+msgid "Update interval:"
+msgstr "Интервал обновления:"
+
+msgid "Refresh now"
+msgstr "Обновить сейчас"
+
+msgid "Style"
+msgstr "Стиль"
+
+msgid "Panel"
+msgstr "Панель"
+
+msgid "Show:"
+msgstr "Показывать:"
+
+msgid "Temperature"
+msgstr "Температуру"
+
+msgid "Condition"
+msgstr "Погодные условия"
+
+msgid "Reverse order"
+msgstr "Обратный порядок"
+
+msgid "Temperature font:"
+msgstr "Шрифт температуры:"
+
+msgid "Bold"
+msgstr "Жирный"
+
+msgid "Condition font:"
+msgstr "Шрифт погодных условий:"
+
+msgid "Decimals:"
+msgstr "Десятые доли:"
+
+msgid "Full view"
+msgstr "Полный вид"
+
+msgid "Condition:"
+msgstr "Условия:"
+
+msgid "Chart decimals:"
+msgstr "Десятые доли графика:"
+
+msgid "Cursor decimals:"
+msgstr "Десятые доли курсора:"
+
+msgid "Shows one decimal while hovering the chart.\nWithout it, the value only updates at whole numbers and can appear stuck as you move along."
+msgstr "Показывает один десятичный знак при наведении курсора на график.\nБез этого значение обновляется только на целых числах и может казаться зависшим при перемещении."
+
+msgid "Y-axis reading:"
+msgstr "Чтение по оси Y:"
+
+msgid "Hover the left edge of the chart to read a value off the Y axis instead of following the curve."
+msgstr "Наведите курсор на левый край графика, чтобы считать значение по оси Y вместо следования за кривой."
+
+msgid "Weather animations:"
+msgstr "Анимации погоды:"
+
+msgid "Details:"
+msgstr "Детали:"
+
+msgid "Apparent temp."
+msgstr "Ощущаемая темп."
+
+msgid "UV index"
+msgstr "УФ-индекс"
+
+msgid "Wind speed"
+msgstr "Скорость ветра"
+
+msgid "Desktop widget:"
+msgstr "Виджет рабочего стола:"
+
+msgid "Radius"
+msgstr "Радиус"
+
+msgid "Opacity"
+msgstr "Непрозрачность"
+
+msgid "Only applies when the widget sits directly on the desktop, not in a panel popup."
+msgstr "Применяется только когда виджет находится непосредственно на рабочем столе, а не во всплывающем окне панели."
+
+msgid "Forecast"
+msgstr "Прогноз"
+
+msgid "Start day offset:"
+msgstr "Смещение начального дня:"
+
+msgid "Data"
+msgstr "Данные"
+
+msgid "Settings:"
+msgstr "Настройки:"
+
+msgid "Restore default settings"
+msgstr "Восстановить настройки по умолчанию"

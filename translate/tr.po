@@ -48,78 +48,6 @@ msgstr "UV İndeksi"
 msgid "Wind"
 msgstr "Rüzgar"
 
-msgid "General"
-msgstr "Genel"
-
-msgid "Automatic Location (IP):"
-msgstr "Otomatik Konum (IP):"
-
-msgid "Latitude:"
-msgstr "Enlem:"
-
-msgid "Longitude:"
-msgstr "Boylam:"
-
-msgid "Temperature & Speed Unit:"
-msgstr "Sıcaklık ve Hız Birimi:"
-
-msgid "(°C) / (km/h)"
-msgstr "(°C) / (km/sa)"
-
-msgid "(°F) / (mph)"
-msgstr "(°F) / (mph)"
-
-msgid "Update Interval (min):"
-msgstr "Güncelleme Aralığı (dak):"
-
-msgid "Show temperature:"
-msgstr "Sıcaklığı göster:"
-
-msgid "Show condition text:"
-msgstr "Durum metnini göster:"
-
-msgid "Show condition text (panel):"
-msgstr "Durum metnini göster (panel):"
-
-msgid "Show condition text (Full view):"
-msgstr "Durum metnini göster (Tam görünüm):"
-
-msgid "Show decimals (only panel):"
-msgstr "Ondalıkları göster (yalnızca panel):"
-
-msgid "Show decimals on charts:"
-msgstr "Ondalıkları grafiklerde göster:"
-
-msgid "Reverse Temp/Condition order:"
-msgstr "Sıcaklık/Durum sırasını tersine çevir:"
-
-msgid "Border radius (desktop view):"
-msgstr "Kenarlık yarıçapı (masaüstü görünümü):"
-
-msgid "Temperature font size:"
-msgstr "Sıcaklık yazı tipi boyutu:"
-
-msgid "Bold temperature:"
-msgstr "Kalın sıcaklık:"
-
-msgid "Condition font size:"
-msgstr "Durum yazı tipi boyutu:"
-
-msgid "Bold condition text:"
-msgstr "Kalın durum metni:"
-
-msgid "Details to show:"
-msgstr "Gösterilecek detaylar:"
-
-msgid "Apparent Temperature"
-msgstr "Hissedilen Sıcaklık"
-
-msgid "Wind Speed"
-msgstr "Rüzgar Hızı"
-
-msgid "Forecast start day offset:"
-msgstr "Tahmin başlangıç günü farkı:"
-
 msgid "Feels"
 msgstr "Hiss."
 
@@ -132,11 +60,128 @@ msgstr "UV"
 msgid "Temp."
 msgstr "Sıcak."
 
-msgid "Enable weather animations:"
-msgstr "Hava durumu animasyonlarını etkinleştir:"
+msgid "Restore default settings?"
+msgstr "Varsayılan ayarları geri yükle?"
 
-msgid "Refresh Weather Data"
-msgstr "Hava Durumu Verilerini Yenile"
+msgid "All settings on this page will be reset to their defaults. This cannot be undone."
+msgstr "Bu sayfadaki tüm ayarlar varsayılan değerlerine sıfırlanacaktır. Bu işlem geri alınamaz."
 
-msgid "Manual Actions:"
-msgstr "Manuel İşlemler:"
+msgid "Location"
+msgstr "Konum"
+
+msgid "Automatic location (IP):"
+msgstr "Otomatik konum (IP):"
+
+msgid "Coordinates:"
+msgstr "Koordinatlar:"
+
+msgid "Latitude"
+msgstr "Enlem"
+
+msgid "Longitude"
+msgstr "Boylam"
+
+msgid "Units & updates"
+msgstr "Birimler ve güncellemeler"
+
+msgid "Units:"
+msgstr "Birimler:"
+
+msgid "Update interval:"
+msgstr "Güncelleme aralığı:"
+
+msgid "Refresh now"
+msgstr "Şimdi yenile"
+
+msgid "Style"
+msgstr "Stil"
+
+msgid "Panel"
+msgstr "Panel"
+
+msgid "Show:"
+msgstr "Göster:"
+
+msgid "Temperature"
+msgstr "Sıcaklık"
+
+msgid "Condition"
+msgstr "Durum"
+
+msgid "Reverse order"
+msgstr "Sırayı tersine çevir"
+
+msgid "Temperature font:"
+msgstr "Sıcaklık yazı tipi:"
+
+msgid "Bold"
+msgstr "Kalın"
+
+msgid "Condition font:"
+msgstr "Durum yazı tipi:"
+
+msgid "Decimals:"
+msgstr "Ondalıklar:"
+
+msgid "Full view"
+msgstr "Tam görünüm"
+
+msgid "Condition:"
+msgstr "Durum:"
+
+msgid "Chart decimals:"
+msgstr "Grafik ondalıkları:"
+
+msgid "Cursor decimals:"
+msgstr "İmleç ondalıkları:"
+
+msgid "Shows one decimal while hovering the chart.\nWithout it, the value only updates at whole numbers and can appear stuck as you move along."
+msgstr "Grafik üzerinde gezinirken tek ondalık basamak gösterir.\nOlmadığında değer sadece tam sayılarda güncellenir ve hareket ettikçe takılmış gibi görünebilir."
+
+msgid "Y-axis reading:"
+msgstr "Y ekseni okuması:"
+
+msgid "Hover the left edge of the chart to read a value off the Y axis instead of following the curve."
+msgstr "Eğriyi takip etmek yerine Y ekseninden değer okumak için grafiğin sol kenarının üzerine gelin."
+
+msgid "Weather animations:"
+msgstr "Hava durumu animasyonları:"
+
+msgid "Details:"
+msgstr "Detaylar:"
+
+msgid "Apparent temp."
+msgstr "Hissedilen sıcaklık"
+
+msgid "UV index"
+msgstr "UV indeksi"
+
+msgid "Wind speed"
+msgstr "Rüzgar hızı"
+
+msgid "Desktop widget:"
+msgstr "Masaüstü aracı:"
+
+msgid "Radius"
+msgstr "Yarıçap"
+
+msgid "Opacity"
+msgstr "Opaklık"
+
+msgid "Only applies when the widget sits directly on the desktop, not in a panel popup."
+msgstr "Yalnızca araç panel açılır penceresinde değil, doğrudan masaüstünde bulunduğunda geçerlidir."
+
+msgid "Forecast"
+msgstr "Tahmin"
+
+msgid "Start day offset:"
+msgstr "Başlangıç günü farkı:"
+
+msgid "Data"
+msgstr "Veri"
+
+msgid "Settings:"
+msgstr "Ayarlar:"
+
+msgid "Restore default settings"
+msgstr "Varsayılan ayarları geri yükle"
