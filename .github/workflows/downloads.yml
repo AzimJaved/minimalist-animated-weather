@@ -46,4 +46,4 @@ jobs:
 
           # Commit only if files have changed, then push to 'data'
           git commit -m "chore: update downloads badge and history" || exit 0
-          git push origin HEAD:data # <--- On renvoie le résultat uniquement sur data
+          git push origin HEAD:data
