@@ -191,8 +191,9 @@ Item {
                 supportPage.stargazersError = true;
             }
         };
-        listReq.open("GET", "https://raw.githubusercontent.com/Samy879/minimalist-animated-weather/main/.github/data/stargazers.json");
+        listReq.open("GET", "https://raw.githubusercontent.com/Samy879/minimalist-animated-weather/data/stargazers.json?_=" + Date.now());
         listReq.setRequestHeader("Accept", "application/vnd.github+json");
+        listReq.setRequestHeader("Cache-Control", "no-cache");
         listReq.send();
 
         let countReq = new XMLHttpRequest();
@@ -205,8 +206,9 @@ Item {
                 }
             } catch (e) {}
         };
-        countReq.open("GET", "https://raw.githubusercontent.com/Samy879/minimalist-animated-weather/main/.github/data/repo.json");
+        countReq.open("GET", "https://raw.githubusercontent.com/Samy879/minimalist-animated-weather/data/repo.json?_=" + Date.now());
         countReq.setRequestHeader("Accept", "application/vnd.github+json");
+        countReq.setRequestHeader("Cache-Control", "no-cache");
         countReq.send();
     }
 
