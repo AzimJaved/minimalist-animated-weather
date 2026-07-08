@@ -1,8 +1,10 @@
 name: Update Stargazers Data
 
 on:
-  star:
-    types: [created, deleted]
+  watch:
+    types: [started]
+  schedule:
+    - cron: '0 */6 * * *'
   workflow_dispatch:
 
 permissions:
@@ -24,7 +26,7 @@ jobs:
           # Fetch all stargazers
           gh api --paginate "repos/${{ github.repository }}/stargazers" > stargazers.json
           
-          # Fetch total repo info
+          # Fetch total repo info (sauvegardé à la racine)
           gh api "repos/${{ github.repository }}" > repo.json
 
       - name: Commit and Push
