@@ -96,11 +96,13 @@ Your support helps keep the project alive and motivates future improvements.
 
 Planned improvements for future releases:
 
-- [ ] Improve scrolling behavior for better usability when only a few weather icons remain. 
+- [x] Improve scrolling behavior for better usability when only a few weather icons remain. 
 - [ ] Improve and refine weather animations (actual moon phases, dynamic sun colors, weather effects reacting to wind and conditions, fixes for visual glitches such as the moon overlapping text, and other visual improvements).
 - [ ] Improve the appearance of weather condition descriptions.
 - [x] Improve chart readability.
-- [ ] Add support for multiple weather API providers.
+- [x] Add support for multiple weather API providers.
+- [ ] Improve translation quality further (word length and naturalness)
+- [ ] Add a contributors banner in the plasmoid settings ("Support & Community" tab)
 
 Additional ideas and community suggestions are always welcome.
 
@@ -116,6 +118,7 @@ Additional ideas and community suggestions are always welcome.
 
 * [Nicolas-Gth](https://github.com/Nicolas-Gth) — Essential bug fixes and improvements.
 * [Lintech-1](https://github.com/Lintech-1) — Russian localization.
+* [DanGM96](https://github.com/DanGM96) — Implemented automated releases via GitHub Actions. 
 
 ### Current Maintainer
 
