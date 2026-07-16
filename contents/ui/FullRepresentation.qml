@@ -346,7 +346,7 @@ Item {
 
                     Row {
                         spacing: Kirigami.Units.smallSpacing / 2
-                        visible: !!(weatherData && weatherData.city)
+                        visible: !!(Plasmoid.configuration.showLocationExpanded && weatherData && weatherData.city)
 
                         Kirigami.Icon {
                             source: "mark-location"
